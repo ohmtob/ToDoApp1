@@ -46,12 +46,4 @@ public class ToDoUser {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public ToDoUser getToDoUser() {
-        return toDoUser;
-    }
-
-    public void setToDoUser(ToDoUser toDoUser) {
-        this.toDoUser = toDoUser;
-    }
 }

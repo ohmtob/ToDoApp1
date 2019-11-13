@@ -1,8 +1,8 @@
 package com.example.ToDoApp;
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import java.util.List;
+import java.util.UUID;
 
 
 public interface ToDoItemRepository extends CrudRepository<ToDoItem, Long> {
@@ -12,8 +12,9 @@ public interface ToDoItemRepository extends CrudRepository<ToDoItem, Long> {
     List<ToDoItem> findByName(String name);
 
     List<ToDoItem> findByDescription(String description);
-/*
-    @Query("SELECT d FROM Dog d WHERE d.age = ?1")
-    Iterable<Dog> findDogsWithQueryAge(int age);
-*/
+
+    List<ToDoItem> findByListId(UUID listId);
+
+    ToDoItem findByItemId(Long id);
+
 }

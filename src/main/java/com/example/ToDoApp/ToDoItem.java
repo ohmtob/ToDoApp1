@@ -1,6 +1,7 @@
 package com.example.ToDoApp;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 public class ToDoItem {
@@ -8,18 +9,28 @@ public class ToDoItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String description;
-/*
-    @ManyToOne
-    private SecurityProperties.User user;
+    private String activity;
+    private Boolean completed;
+    private Date created;
 
-    public User() {
+    @ManyToOne
+    private com.example.ToDoApp.ToDoItem toDoItem;
+
+    public ToDoItem() {
     }
 
-    public User(String name, int age) {
-        this.name = name;
-        this.age = age;
+    public ToDoItem(String activity,Boolean completed,  Date created) {
+        this.activity = activity;
+        this.completed = completed;
+        this.created = created;
+    }
+
+    public Boolean getCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(Boolean completed) {
+        this.completed = completed;
     }
 
     public Long getId() {
@@ -30,29 +41,21 @@ public class ToDoItem {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getActivity() {
+        return activity;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setActivity(String activity) {
+        this.activity = activity;
     }
 
-    public int getAge() {
-        return age;
+    public Date getCreated() {
+        return created;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setCreated(Date created) {
+        this.created = created;
     }
 
-    public Owner getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Owner owner) {
-        this.owner = owner;
-    }
-    */
 
 }
