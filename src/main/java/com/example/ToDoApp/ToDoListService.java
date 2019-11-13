@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service("ToDoListService")
@@ -13,7 +12,11 @@ class ToDoListService {
     @Autowired
         private ToDoListRepository toDoListRepository;
 
-        ToDoList saveToDoList(ToDoList list) {
+    ToDoListService(ToDoListRepository toDoListRepository) {
+        this.toDoListRepository = toDoListRepository;
+    }
+
+    ToDoList saveToDoList(ToDoList list) {
             return toDoListRepository.save(list);
         }
 
@@ -29,12 +32,12 @@ class ToDoListService {
 
         ToDoList editToDoList(ToDoList editedList)
         {
-            ToDoList list = toDoListRepository.findById(editedList.getId()).orElse(null);
+            ToDoList list = toDoListRepository.findById( Long.valueOf( editedList.getId() ) ).orElse(null);
             if (list != null) {
                 list.setName(editedList.getName());
                 return toDoListRepository.save(list);
             }
-            //Create new if we dont have.
+            //Create new if we don't have.
             return toDoListRepository.save(list);
         }
 
@@ -42,7 +45,7 @@ class ToDoListService {
             return toDoListRepository.findById(id);
         }
 
-        Optional<ToDoList> getToDoList(Long id)
+        ToDoList getToDoList(Long id)
         {
             return toDoListRepository.findById(id);
         }

@@ -8,7 +8,7 @@ import java.sql.Date;
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
+        private Integer id;
         private String name;
         private String description;
         private Date created;
@@ -26,11 +26,11 @@ import java.sql.Date;
 
         }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
