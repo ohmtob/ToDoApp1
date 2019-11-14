@@ -3,24 +3,23 @@ package com.example.ToDoApp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
 
 @Service("ToDoListService")
 class ListService {
 
     @Autowired
-        private ListRepository listRepository;
+        private static ListRepository listRepository;
 
     ListService(ListRepository listRepository) {
         this.listRepository = listRepository;
     }
 
-    List saveToDoList(List list) {
+    static List saveList(List list) {
             return listRepository.save(list);
         }
 
 
-        Boolean deleteToDoList(Long id) {
+        static Boolean deleteList(Long id) {
             List list = listRepository.findById(id).orElse(null);
             if (list != null) {
                 listRepository.delete(list);
@@ -29,7 +28,7 @@ class ListService {
             return false;
         }
 
-        List editToDoList(List editedList)
+        static List editList(List editedList)
         {
             List list = listRepository.findById( Long.valueOf( editedList.getId() ) ).orElse(null);
             if (list != null) {
@@ -40,7 +39,7 @@ class ListService {
             return listRepository.save(list);
         }
 
-        java.util.List getAllToDoListForListId(UUID id) {
+        java.util.List getAllToDoListForListId(User id) {
             return listRepository.findById(id);
         }
 

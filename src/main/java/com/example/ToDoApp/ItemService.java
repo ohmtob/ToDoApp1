@@ -2,20 +2,20 @@ package com.example.ToDoApp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
-import java.util.UUID;
 
 
 @Service("ToDoItemService")
-public class ItemService {
+class ItemService {
     @Autowired
     private ItemRepository itemRepository;
 
-    public Item saveToDoItem(Item item) {
+    Item saveToDoItem(Item item) {
         return itemRepository.save(item);
     }
 
-    public Item completeToDoItem(Long id) {
+    Item completeToDoItem(Long id) {
         Item item = itemRepository.findByItemId(id);
         if (item != null) {
             item.setCompleted(!item.getCompleted());
@@ -25,7 +25,7 @@ public class ItemService {
         return null;
     }
 
-    public Boolean deleteToDoItem(Long id) {
+    Boolean deleteToDoItem(Long id) {
         Item item = itemRepository.findById(id).orElse(null);
         if (item != null) {
             itemRepository.delete(item);
@@ -34,7 +34,7 @@ public class ItemService {
         return false;
     }
 
-    public Item editToDoItem(Item editedItem)
+    Item editToDoItem(Item editedItem)
     {
         Item item = itemRepository.findById(editedItem.getId()).orElse(null);
         if (item != null) {
@@ -45,11 +45,11 @@ public class ItemService {
         return itemRepository.save(item);
     }
 
-    public List<Item> getAllToDoItemsForListId(UUID listId) {
+    List<Item> getAllToDoItemsForListId(User listId) {
         return itemRepository.findByListId(listId);
     }
 
-    public Item getItem(Long id)
+    Item getItem(Long id)
     {
         return itemRepository.findByItemId(id);
     }

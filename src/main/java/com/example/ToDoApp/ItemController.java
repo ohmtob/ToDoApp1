@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.*;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,7 +22,7 @@ public class ItemController {
 
     // Get todo list, based on listId
     @GetMapping("/list/{listId}")
-    public List<Item> getItem(@PathVariable UUID listId) {
+    List<Item> getItem(@PathVariable User listId) {
         return itemService.getAllToDoItemsForListId(listId);
     }
 

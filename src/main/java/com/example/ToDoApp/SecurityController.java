@@ -9,11 +9,6 @@ public class SecurityController {
     public String start() {
         return "start";
     }
-
-    @GetMapping("/secret")
-    public String secret() {
-    return "secret";
-}
     @GetMapping("/home")
     public String home() {
         return "home";
@@ -30,4 +25,13 @@ public class SecurityController {
     public String admin() {
         return "admin";
     }
+    @GetMapping("/secret")
+    public String list() {
+    return "list";
+}
+    @GetMapping("/items")
+    public String secret() {
+        return "items";
+    }
+
 }
