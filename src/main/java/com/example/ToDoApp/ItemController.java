@@ -12,30 +12,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/api/v1")
-public class ToDoItemController {
+public class ItemController {
     @Autowired
-    private ToDoItemService itemService;
+    private ItemService itemService;
 
     @GetMapping("/item/{itemId}")
-    public ToDoItem getItem(@PathVariable Long itemId) {
+    public Item getItem(@PathVariable Long itemId) {
         return itemService.getItem(itemId);
     }
 
     // Get todo list, based on listId
     @GetMapping("/list/{listId}")
-    public List<ToDoItem> getItem(@PathVariable UUID listId) {
+    public List<Item> getItem(@PathVariable UUID listId) {
         return itemService.getAllToDoItemsForListId(listId);
     }
 
     // New todo item
     @PostMapping(value = "/new")
-    public ResponseEntity<ToDoItem> newTodoItem(@RequestBody ToDoItem item) {
+    public ResponseEntity<Item> newTodoItem(@RequestBody Item item) {
         return ResponseEntity.ok(itemService.saveToDoItem(item));
     }
 
     // Edit todo item
     @PutMapping("/edit")
-    public ResponseEntity<ToDoItem> editToDoItem(@RequestBody ToDoItem item) {
+    public ResponseEntity<Item> editToDoItem(@RequestBody Item item) {
         return ResponseEntity.ok(itemService.editToDoItem(item));
     }
 
@@ -45,9 +45,9 @@ public class ToDoItemController {
         return ResponseEntity.ok(itemService.deleteToDoItem(id));
     }
 
-    // Change done state
+    // Change completed state
     @PutMapping("/state/{id}")
-    public ResponseEntity<ToDoItem> changeDoneState(@PathVariable Long id) {
-        return ResponseEntity.ok(itemService.changeDoneStateForToDoItem(id));
+    public ResponseEntity<Item> completedToDoItem(@PathVariable Long id) {
+        return ResponseEntity.ok(itemService.completeToDoItem(id));
     }
 }

@@ -4,33 +4,33 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-    public class ToDoList {
+    public class List {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
+        private Long id;
         private String name;
         private String description;
         private Date created;
 
         @ManyToOne
-        private com.example.ToDoApp.ToDoList toDoList;
+        private List list;
 
-        public ToDoList() {
+        public List() {
         }
 
-        public ToDoList(String name, String description, Date created) {
+        public List(String name, String description, Date created) {
             this.name = name;
             this.description = description;
             this.created = created;
 
         }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

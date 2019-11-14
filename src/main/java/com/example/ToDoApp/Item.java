@@ -4,22 +4,22 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-public class ToDoItem {
+public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String activity;
     private Boolean completed;
     private Date created;
 
     @ManyToOne
-    private com.example.ToDoApp.ToDoItem toDoItem;
+    private Item item;
 
-    public ToDoItem() {
+    public Item() {
     }
 
-    public ToDoItem(String activity,Boolean completed,  Date created) {
+    public Item(String activity, Boolean completed, Date created) {
         this.activity = activity;
         this.completed = completed;
         this.created = created;
@@ -33,11 +33,11 @@ public class ToDoItem {
         this.completed = completed;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
