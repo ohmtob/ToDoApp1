@@ -24,20 +24,20 @@ public class ListController {
     }
 
     // New todo list
-    @PostMapping(value = "/new")
-    public ResponseEntity<List> newTodoList(@RequestBody List list) {
+    @PostMapping(value = "/newlist")
+    public ResponseEntity<List> newList(@RequestBody List list) {
         return ResponseEntity.ok( ListService.saveList(list));
     }
 
     // Edit todo list
-    @PutMapping("/edit")
-    public ResponseEntity<List> editToDoList(@RequestBody List list) {
+    @PutMapping("/editlist")
+    public ResponseEntity<List> editList(@RequestBody List list) {
         return ResponseEntity.ok( ListService.editList(list));
     }
 
     // Delete todo list
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Boolean> deleteToDoList(@PathVariable Long id) {
+    @DeleteMapping("/deletelist/{id}")
+    public ResponseEntity<Boolean> deleteList(@PathVariable Long id) {
         return ResponseEntity.ok( ListService.deleteList(id));
     }
 

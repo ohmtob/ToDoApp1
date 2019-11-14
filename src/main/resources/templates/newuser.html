@@ -5,9 +5,9 @@ xtras-springsecurity4">
 <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 <link rel="javascript" type="script.js" href="script.js">
 <head>
-    <title>To Do List</title>
+    <title>New User</title>
     <meta charset="UTF-8">
-    <title>To Do List</title>
+    <title>New User</title>
 </head>
 <body>
 <div>
@@ -44,6 +44,10 @@ xtras-springsecurity4">
 <form th:action="@{/logout}" method="post">
     <input type="submit" value="Logout"/>
 </form>
+<div sec:authorize="hasRole('ROLE_ADMIN')">
+    <h2>Users</h2>
+    <a href="/newuser">New User</a>
+</div>
 </div>
 </body>
 </html>

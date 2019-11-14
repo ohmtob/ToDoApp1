@@ -21,34 +21,34 @@ public class ItemController {
     }
 
 /*
-    // Get todo list, based on listId
-    @GetMapping("/list/{listId}")
-    List<Item> getItem(@PathVariable User listId) {
-        return itemService.getAllToDoItemsForListId(listId);
+    // Get todo item, based on itemId
+    @GetMapping("/item/{itemId}")
+    List<Item> getItem(@PathVariable User itemId) {
+        return itemService.getAllToDoItemsForItemId(itemId);
     }
 */
 
     // New todo item
-    @PostMapping(value = "/new")
-    public ResponseEntity<Item> newTodoItem(@RequestBody Item item) {
-        return ResponseEntity.ok(itemService.saveToDoItem(item));
+    @PostMapping(value = "/newitem")
+    public ResponseEntity<Item> newItem(@RequestBody Item item) {
+        return ResponseEntity.ok(itemService.saveItem(item));
     }
 
     // Edit todo item
-    @PutMapping("/edit")
-    public ResponseEntity<Item> editToDoItem(@RequestBody Item item) {
-        return ResponseEntity.ok(itemService.editToDoItem(item));
+    @PutMapping("/edititem")
+    public ResponseEntity<Item> editItem(@RequestBody Item item) {
+        return ResponseEntity.ok(itemService.editItem(item));
     }
 
     // Delete todo item
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Boolean> deleteToDoItem(@PathVariable Long id) {
-        return ResponseEntity.ok(itemService.deleteToDoItem(id));
+    @DeleteMapping("/deleteitem/{id}")
+    public ResponseEntity<Boolean> deleteItem(@PathVariable Long id) {
+        return ResponseEntity.ok(itemService.deleteItem(id));
     }
 
     // Change completed state
     @PutMapping("/state/{id}")
-    public ResponseEntity<Item> completedToDoItem(@PathVariable Long id) {
-        return ResponseEntity.ok(itemService.completeToDoItem(id));
+    public ResponseEntity<Item> completedItem(@PathVariable Long id) {
+        return ResponseEntity.ok(itemService.completedItem(id));
     }
 }

@@ -3,14 +3,45 @@
 xtras-springsecurity4">
 <link rel="stylesheet" type="text/css" th:href="@{/css/normalize.css}" />
 <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<link rel="javascript" type="script.js" href="script.js">
 <head>
-    <title>Login</title>
-</head>
-<body>
-<div th:if="${param.error}">
-    Invalid username and password.
-</div>
-
-</form>
+    <title>Logout</title>
+        <meta charset="UTF-8">
+        <title>Logout</title>
+    </head>
+    <body>
+    <div>
+        <ul class="menu cf">
+            <li><a>To Do List</a>
+                <ul class="submenu">
+                    <li><a href="/list">To Do list</a></li>
+                    <li><a href="/newlist">New To Do List</a></li>
+                    <li><a href="/editlist">Edit To Do List</a></li>
+                    <li><a href="/deletelist">Delete To Do List</a></li>
+                </ul>
+            </li>
+            <li><a>To Do Item</a>
+                <ul class="submenu">
+                    <li><a href="/item">To Do Item</a></li>
+                    <li><a href="/state">Status For To Do Item</a></li>
+                    <li><a href="/newitem">New To Do Item</a></li>
+                    <li><a href="/edititem">Edit To Do Item</a></li>
+                    <li><a href="/deleteitem">Delete To Do Item</a></li>
+                </ul>
+            </li>
+            <li><a>Users</a>
+                <ul class="submenu">
+                    <li><a href="/user">Users</a></li>
+                    <li><a href="/newuser">New User</a></li>
+                    <li><a href="/deleteuser">Delete User</a></li>
+                </ul>
+            </li>
+            <li><a href="/logout">Log out</a></li>
+            </li>
+        </ul>
+    </div>
+    <div th:if="${param.error}">
+        Invalid username and password.
+    </div>
 </body>
 </html>

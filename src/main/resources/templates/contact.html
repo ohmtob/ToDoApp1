@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/thymeleaf-e
-xtras-springsecurity4">
-<link rel="stylesheet" type="text/css" th:href="@{/css/normalize.css}" />
-<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<html lang="en">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:if="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="javascript" type="script.js" href="script.js">
 <link rel="javascript" type="script.js" href="script.js">
 <head>
-    <title>To Do List</title>
     <meta charset="UTF-8">
-    <title>To Do List</title>
+    <title>Contact info</title>
 </head>
 <body>
 <div>
@@ -39,11 +38,7 @@ xtras-springsecurity4">
         <li><a href="/logout">Log out</a></li>
         </li>
     </ul>
-</div>
-<p th:text="${'Logged in as: ' + #httpServletRequest.remoteUser}"></p>
-<form th:action="@{/logout}" method="post">
-    <input type="submit" value="Logout"/>
-</form>
+    </div>
 </div>
 </body>
 </html>

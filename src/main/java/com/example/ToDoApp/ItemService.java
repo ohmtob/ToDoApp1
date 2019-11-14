@@ -6,16 +6,16 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 
-@Service("ToDoItemService")
+@Service("ItemService")
 class ItemService {
     @Autowired
     private ItemRepository itemRepository;
 
-    Item saveToDoItem(Item item) {
+    Item saveItem(Item item) {
         return itemRepository.save(item);
     }
 
-    Item completeToDoItem(Long id) {
+    Item completedItem(Long id) {
         Item item = itemRepository.findByItemId(id);
         if (item != null) {
             item.setCompleted(!item.getCompleted());
@@ -25,7 +25,7 @@ class ItemService {
         return null;
     }
 
-    Boolean deleteToDoItem(Long id) {
+    Boolean deleteItem(Long id) {
         Item item = itemRepository.findById(id).orElse(null);
         if (item != null) {
             itemRepository.delete(item);
@@ -34,7 +34,7 @@ class ItemService {
         return false;
     }
 
-    Item editToDoItem(Item editedItem)
+    Item editItem(Item editedItem)
     {
         Item item = itemRepository.findById(editedItem.getId()).orElse(null);
         if (item != null) {
