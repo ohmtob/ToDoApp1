@@ -13,7 +13,7 @@ public class InitController {
     @Autowired
     private
     PasswordEncoder encoder;
-    @GetMapping("/init")
+/*    @GetMapping("/init")
     public String init(){
         User user = userRepository.findByUsername("user");
         if (user == null) {
@@ -23,5 +23,8 @@ public class InitController {
             userRepository.save(user);
         }
         return "ok";
-    }
+
+        }
+        */
+
 }

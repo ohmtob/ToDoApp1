@@ -20,11 +20,13 @@ public class ItemController {
         return itemService.getItem(itemId);
     }
 
+/*
     // Get todo list, based on listId
     @GetMapping("/list/{listId}")
     List<Item> getItem(@PathVariable User listId) {
         return itemService.getAllToDoItemsForListId(listId);
     }
+*/
 
     // New todo item
     @PostMapping(value = "/new")

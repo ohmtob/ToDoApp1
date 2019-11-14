@@ -43,11 +43,11 @@ class ListService {
             return listRepository.findById(id);
         }
 
-        List getToDoList(Long id)
+ /*       List getToDoList(Long id)
         {
             return listRepository.findById(id);
         }
-
+*/
 
     }
 

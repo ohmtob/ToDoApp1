@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -13,11 +12,11 @@ public class ListController {
     @Autowired
     private ListService listService;
 
-    @GetMapping("/list/{listId}")
+ /*   @GetMapping("/list/{listId}")
     public List getList(@PathVariable Long listId) {
         return listService.getToDoList(listId);
     }
-
+*/
     // Get todo list, based on listId
     @GetMapping("/list/{listId}")
     public java.util.List getList(@PathVariable User listId) {
