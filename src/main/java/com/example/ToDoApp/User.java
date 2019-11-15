@@ -10,6 +10,8 @@ public class User {
     @Column(nullable = false, unique = true)
     private String user;
     private String password;
+
+
     public Long getId() {
         return id;
     }
@@ -28,4 +30,6 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
 }

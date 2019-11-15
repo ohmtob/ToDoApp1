@@ -39,15 +39,14 @@ class ListService {
             return listRepository.save(list);
         }
 
-        java.util.List getAllToDoListForListId(User id) {
+        List getAllToDoListForListId(User id) {
             return listRepository.findById(id);
         }
 
- /*       List getToDoList(Long id)
+        List getList(Long id)
         {
-            return listRepository.findById(id);
+            return listRepository.findByListId(id);
         }
-*/
 
     }
 
