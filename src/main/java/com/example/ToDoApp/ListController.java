@@ -13,9 +13,31 @@ import java.util.List;
 public class ListController {
 
     @Autowired
+    private ItemService itemService;
+    @Autowired
+    private ItemRepository itemRepository;
+    @Autowired
     private ListService listService;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private UserHasListRepository userHasListRepository;
+    @Autowired
+    private UserController userController;
+    @Autowired
+    private User user;
+    @Autowired
+    private List list;
+    @Autowired
+    private List toDoList;
+    @Autowired
+    private ListController listController;
+    @Autowired
+    private UserHasList userHasList;
+    @Autowired
+    private ListHasItemRepository listHasItemRepository;
+    @Autowired
+    private Item item;
 
 /*    @GetMapping("/login")
     public String getLogin(HttpSession session) {
@@ -33,34 +55,34 @@ public class ListController {
     public com.example.ToDoApp.List getList(@PathVariable Long listId) {
         return listService.getList(listId);
     }
-        // Get todo list, based on listId
+        // Get toDoList, based on listId
         @GetMapping("/list/{listId}")
         public com.example.ToDoApp.List getList (@PathVariable User listId){
             return listService.getAllToDoListForListId( listId );
         }
 
-        // New todo list
+        // New toDoList
         @PostMapping(value = "/newlist")
-        public ResponseEntity<List> newList (@RequestBody List list){
-            return ResponseEntity.ok( ListService.saveList( list ) );
+        public ResponseEntity<List> newList (@RequestBody List toDoList){
+            return ResponseEntity.ok( ListService.saveList(toDoList) );
         }
 
-        // Edit todo list
+        // Edit toDoList
         @PutMapping("/editlist")
-        public ResponseEntity<List> editList (@RequestBody List list){
-            return ResponseEntity.ok( ListService.editList( list ) );
+        public ResponseEntity<List> editList (@RequestBody List toDoList){
+            return ResponseEntity.ok( ListService.editList( toDoList ) );
         }
 
-        // Delete todo list
+        // Delete toDoList
         @DeleteMapping("/deletelist/{id}")
         public ResponseEntity<Boolean> deleteList (@PathVariable Long id){
             return ResponseEntity.ok( ListService.deleteList( id ) );
         }
 
-    @PostMapping("/login")
+    @PostMapping("/list")
     public String postLogin(Model model, HttpSession session, @RequestParam String username, @RequestParam String password) {
 
-        List<User> allInLogs = (List<User>) UserRepository.findAll();
+        List<User> allInLogs = (List<User>) userRepository.findAll();
 
         for (int i = 0; i < allInLogs.size(); i++) {
             if (username.equals( allInLogs.get( i ).getUser() ) && (password.equals( allInLogs.get( i ).getPassword() ))) {
@@ -71,16 +93,17 @@ public class ListController {
         String checkSession = (String) session.getAttribute( "username" );
 
         if (checkSession != null) {
-            java.util.List<User> users = (java.util.List<User>) UserRepository.findAll();
+            List<User> users = (List<User>) userRepository.findAll();
             model.addAttribute( "users", users );
 
-            List<User> userList = (List<UserHasList>) UserHasListRepository.findAll();
+            List<UserHasList> userList = (List<UserHasList>) userHasListRepository.findAll();
 
             for (int i = 0; i < userList.size(); i++) {
-                if (userList.get( i ).get()) ;
-
+                for(int j = 0; j < users.size(); j++){
+                    if (userList.get( i ).getUserId().equals(users.get(j))) ;
+                }
             }
-            model.addAttribute( "list", listall );
+            model.addAttribute( "list", list );
             return "/list";
         } else {
             return "login";

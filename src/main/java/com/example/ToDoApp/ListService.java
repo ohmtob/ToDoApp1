@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-@Service("ToDoListService")
+@Service("ListService")
 class ListService {
 
     @Autowired
@@ -14,15 +14,15 @@ class ListService {
         this.listRepository = listRepository;
     }
 
-    static List saveList(List list) {
-            return listRepository.save(list);
+    public static List saveList(List toDoList) {
+            return listRepository.save(toDoList);
         }
 
 
         static Boolean deleteList(Long id) {
-            List list = listRepository.findById(id).orElse(null);
-            if (list != null) {
-                listRepository.delete(list);
+            List toDoList = listRepository.findById(id).orElse(null);
+            if (toDoList != null) {
+                listRepository.delete(toDoList);
                 return true;
             }
             return false;
@@ -30,13 +30,13 @@ class ListService {
 
         static List editList(List editedList)
         {
-            List list = listRepository.findById( Long.valueOf( editedList.getId() ) ).orElse(null);
-            if (list != null) {
-                list.setName(editedList.getName());
-                return listRepository.save(list);
+            List toDoList = listRepository.findById( Long.valueOf( editedList.getId() ) ).orElse(null);
+            if (toDoList != null) {
+                toDoList.setName(editedList.getName());
+                return listRepository.save(toDoList);
             }
             //Create new if we don't have.
-            return listRepository.save(list);
+            return listRepository.save(toDoList);
         }
 
         List getAllToDoListForListId(User id) {

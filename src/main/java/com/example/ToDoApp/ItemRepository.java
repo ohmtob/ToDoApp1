@@ -7,10 +7,7 @@ import java.util.List;
 
 public interface ItemRepository extends CrudRepository<Item, Long> {
 
-
-    List<Item> findByName(String name);
-
-    List<Item> findByDescription(String description);
+List<Item> findAll();
 
     List<Item> findByListId(User listId);
 

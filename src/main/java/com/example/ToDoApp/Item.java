@@ -9,9 +9,10 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false, unique = true)
     private String activity;
     private Boolean completed;
-    private Date created;
+
 
     @ManyToOne
     private Item item;
@@ -22,7 +23,7 @@ public class Item {
     public Item(String activity, Boolean completed, Date created) {
         this.activity = activity;
         this.completed = completed;
-        this.created = created;
+
     }
 
     public Boolean getCompleted() {
@@ -49,13 +50,6 @@ public class Item {
         this.activity = activity;
     }
 
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(Date created) {
-        this.created = created;
-    }
 
 
 }

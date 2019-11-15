@@ -9,9 +9,10 @@ import java.sql.Date;
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
+    @Column(nullable = false, unique = true)
         private String name;
         private String description;
-        private Date created;
+
 
         @ManyToOne
         private List list;
@@ -22,7 +23,6 @@ import java.sql.Date;
         public List(String name, String description, Date created) {
             this.name = name;
             this.description = description;
-            this.created = created;
 
         }
 
@@ -50,11 +50,5 @@ import java.sql.Date;
         this.description = description;
     }
 
-    public Date getCreated() {
-        return created;
-    }
 
-    public void setCreated(Date created) {
-        this.created = created;
-    }
 }
